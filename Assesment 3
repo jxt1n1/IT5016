@@ -1,0 +1,37 @@
+class Animal:
+    def __init__(self,name):
+        self.name = name
+ 
+    def speak(self):
+        print(f"{self.name} make a sound.")
+ 
+class Dog(Animal):
+    def bark(self):
+        print(f"{self.name} barks.")
+ 
+my_dog = Dog ("Buddy")
+my_dog.speak()
+my_dog.bark()
+
+1. Single Responsibility Principle (SRP)
+Explanation: Each class should have one reason to change. In your code:
+
+The Animal class is responsible for defining a general animal structure and enforcing a contract for subclasses with the speak method.
+The Dog class is responsible only for implementing how a dog speaks. This separation ensures that changes related to dog behavior don’t affect the broader animal framework, promoting maintainability.
+2. Open/Closed Principle (OCP)
+Explanation: Software entities (classes, modules, functions, etc.) should be open for extension but closed for modification.
+
+Your design allows for the addition of new animal types (e.g., Cat, Bird) without modifying existing code. Each new animal class can implement the speak method to provide specific behavior while the Animal base class remains unchanged.
+3. Liskov Substitution Principle (LSP)
+Explanation: Subtypes must be substitutable for their base types without altering the correctness of the program.
+
+In your code, instances of Dog can be used wherever an Animal is expected. If you create a Cat class that also extends Animal, it should be able to override speak without causing issues. This ensures that your program behaves predictably, adhering to the expected interface.
+4. Encapsulation
+Explanation: Encapsulation restricts direct access to some of an object's components, which helps prevent unintended interference and misuse.
+
+The _name attribute in the Animal class is marked as private (by convention), and its access is provided through a property (name). This protects the internal state of the object and allows for validation or additional logic in the future without changing the public interface.
+Summary
+These principles enhance the robustness, maintainability, and flexibility of your code. By adhering to them, you create a design that is easier to extend, test, and manage over time, while reducing the risk of bugs introduced by changes.
+
+
+
